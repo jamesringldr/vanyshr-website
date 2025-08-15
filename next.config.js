@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Configuration for Next.js static export to GitHub Pages
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
