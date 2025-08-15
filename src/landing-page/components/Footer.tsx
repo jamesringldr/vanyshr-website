@@ -1,7 +1,6 @@
 'use client';
 
 import { Mail, Phone, MapPin } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -10,11 +9,9 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="mb-4">
-              <Image
+              <img
                 src="/assets/Logo/Logo-white and blue.svg"
                 alt="Vanyshr Logo"
-                width={120}
-                height={40}
                 className="h-8 w-auto"
               />
             </div>

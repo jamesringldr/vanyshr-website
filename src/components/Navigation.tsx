@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+
 
 export default function Navigation() {
   const scrollToPricing = () => {
@@ -15,11 +15,9 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <Image
+          <img
             src="/assets/Logo/Logo-white and blue.svg"
             alt="Vanyshr Logo"
-            width={180}
-            height={60}
             className="h-12 w-auto"
           />
         </div>
