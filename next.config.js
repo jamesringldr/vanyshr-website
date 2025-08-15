@@ -7,8 +7,8 @@ const nextConfig = {
     unoptimized: true
   },
   // Custom domain configuration
-  assetPrefix: '',
-  basePath: ''
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/vanyshr-website' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/vanyshr-website' : ''
 };
 
 module.exports = nextConfig;

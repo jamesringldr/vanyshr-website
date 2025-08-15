@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "Protect your privacy with Vanyshr's comprehensive data removal service.",
   },
   icons: {
-    icon: '/assets/Logo/Favicon.svg',
+    icon: '/vanyshr-website/assets/Logo/Favicon.svg',
   },
 };
 
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/Logo/Favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/vanyshr-website/assets/Logo/Favicon.svg" type="image/svg+xml" />
       </head>
       <body className="antialiased">
         {children}

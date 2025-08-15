@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="mb-4">
               <img
-                src="/assets/Logo/Logo-white and blue.svg"
+                src="/vanyshr-website/assets/Logo/Logo-white and blue.svg"
                 alt="Vanyshr Logo"
                 className="h-8 w-auto"
               />
