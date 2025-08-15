@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // Update this with your actual repository name
+  // Updated with actual repository name
   assetPrefix: process.env.NODE_ENV === 'production' ? '/vanyshr-website' : '',
   basePath: process.env.NODE_ENV === 'production' ? '/vanyshr-website' : ''
 };
