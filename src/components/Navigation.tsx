@@ -16,7 +16,7 @@ export default function Navigation() {
         {/* Logo */}
         <div className="flex items-center">
           <img
-            src="/vanyshr-website/assets/Logo/Logo-white and blue.svg"
+            src="/assets/Logo/Logo-white and blue.svg"
             alt="Vanyshr Logo"
             className="h-12 w-auto"
           />
