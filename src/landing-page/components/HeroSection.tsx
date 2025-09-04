@@ -23,13 +23,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [dataPoints.length]);
 
-  const scrollToHowItWorks = () => {
-    const howItWorksSection = document.getElementById('how-it-works-section');
-    if (howItWorksSection) {
-      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="section-padding bg-brand-text">
       <div className="container-max">
@@ -69,15 +62,12 @@ export default function HeroSection() {
             Test us out! Your first removal is free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-            <button className="bg-brand-accent hover:bg-brand-accent2 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105">
-              Get Started
-            </button>
-            <button 
-              onClick={scrollToHowItWorks}
-              className="btn-secondary"
+            <a 
+              href="https://vanyshr.vercel.app/quick-scan/"
+              className="bg-brand-accent hover:bg-brand-accent2 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
             >
-              How it works
-            </button>
+              QuickScan
+            </a>
           </div>
           <p className="text-base font-bold text-brand-accent">
             No Credit Card Required
