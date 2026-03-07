@@ -2,76 +2,171 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
+
+const dataPoints = [
+  'Phone Numbers',
+  'Home Addresses',
+  'Emails',
+  'Dates of Birth',
+  'Relatives',
+  'Court Records',
+  'Financial Records',
+];
+
+const STAT_ITEMS = [
+  { value: '100+', label: 'Data Brokers Targeted' },
+  { value: '30–90', label: 'Days Avg. Removal' },
+  { value: '100%', label: 'Data Deleted on Request' },
+  { value: '0', label: 'Data Sold. Ever.' },
+];
 
 export default function HeroSection() {
-  const dataPoints = [
-    "Phone Number",
-    "Email", 
-    "Home Address",
-    "Birthdate",
-    "Relatives",
-    "Government Records"
-  ];
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % dataPoints.length);
-    }, 2000);
-
+      setCurrentIndex((prev) => (prev + 1) % dataPoints.length);
+    }, 2200);
     return () => clearInterval(interval);
-  }, [dataPoints.length]);
+  }, []);
 
   return (
-    <section className="section-padding bg-brand-text">
-      <div className="container-max">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            <div className="mb-2">
-              It's easy to find your
-            </div>
-            <div className="h-16 md:h-20 lg:h-24 flex items-center justify-center overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentIndex}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="block font-bold"
-                  style={{ color: '#FF8400' }}
-                >
-                  {dataPoints[currentIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-            <div className="mt-2">
-              We make it <span className="text-brand-accent italic">Vanysh</span>.
-            </div>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            <span className="font-bold italic" style={{ color: '#FF8400' }}>Spammers, Scammers, and Internet Sleuths</span> use data brokers to access your exposed private data. We use AI to hunt down which brokers have your data, demand removal, and monitor their compliance.
-          </p>
-          <p className="text-lg font-bold italic text-white mb-2">
-            Test us out! Your first removal is free.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-            <a 
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#022136]">
+      {/* Background glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,191,255,0.13) 0%, transparent 70%)',
+        }}
+      />
+      {/* Subtle grid texture */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            'linear-gradient(#00BFFF 1px, transparent 1px), linear-gradient(90deg, #00BFFF 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 pb-16">
+        <div className="max-w-4xl mx-auto text-center">
+
+          {/* Label */}
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex items-center gap-2 mb-6"
+          >
+            <ShieldCheck className="w-4 h-4 text-[#00BFFF]" />
+            <span className="text-[#00BFFF] text-xs font-medium tracking-widest uppercase">
+              AI Powered Data Privacy
+            </span>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[2.75rem] sm:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-tighter mb-3 text-left"
+          >
+            {/* Row 1: left-justified so "Your" stays anchored as carousel changes width */}
+            <span className="flex items-baseline gap-3 flex-wrap">
+              <span>Your</span>
+              <span className="relative overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentIndex}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                    className="inline-block text-[#FF8A00] italic"
+                  >
+                    {dataPoints[currentIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
+            {/* Row 2 */}
+            <span className="block">are exposed online.</span>
+            {/* Row 3 */}
+            <span className="block italic text-[#00BFFF]">We Make It Vanysh.</span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-[#B8C4CC] text-lg sm:text-xl leading-relaxed max-w-2xl mt-6 mb-10"
+          >
+            <span className="text-white font-semibold italic">Scammers, Spammers & Identity Thieves</span>{' '}
+            use data brokers to find and exploit your personal information.
+            Vanyshr uses AI to hunt it down, demand removal, and monitor compliance —{' '}
+            <span className="text-[#00BFFF] font-semibold">automatically</span>.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="flex flex-col sm:flex-row items-start justify-start gap-4 mb-5"
+          >
+            <a
               href="https://vanyshr.vercel.app/quick-scan/"
-              className="bg-brand-accent hover:bg-brand-accent2 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_30px_rgba(0,191,255,0.35)]"
             >
-              QuickScan
+              Run a Free QuickScan
+              <ArrowRight className="w-5 h-5" />
             </a>
-          </div>
-          <p className="text-base font-bold text-brand-accent">
-            No Credit Card Required
-          </p>
+            <button
+              onClick={() => {
+                const el = document.getElementById('how-it-works');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="inline-flex items-center gap-2 border-2 border-[#2A4A68] hover:border-[#00BFFF] text-[#B8C4CC] hover:text-white font-semibold text-base px-8 py-4 rounded-xl transition-all duration-200"
+            >
+              See How It Works
+            </button>
+          </motion.div>
+
+          {/* Reassurance */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-[#7A92A8] text-sm text-left"
+          >
+            No credit card required &nbsp;·&nbsp; No sign-up to scan &nbsp;·&nbsp; Your first removal is free
+          </motion.p>
+        </div>
+
+        {/* Stats strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.85 }}
+          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#2A4A68] rounded-2xl overflow-hidden border border-[#2A4A68]"
+        >
+          {STAT_ITEMS.map((stat, i) => (
+            <div
+              key={i}
+              className="bg-[#022136] px-6 py-6 text-center hover:bg-[#0d2a3d] transition-colors duration-200"
+            >
+              <div className="text-3xl font-bold text-[#00BFFF] tracking-tight">
+                {stat.value}
+              </div>
+              <div className="text-[#7A92A8] text-sm mt-1">{stat.label}</div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

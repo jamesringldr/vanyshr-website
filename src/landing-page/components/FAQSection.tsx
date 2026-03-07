@@ -1,93 +1,147 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+
+const faqData = [
+  {
+    question: 'What is Vanyshr and how does it work?',
+    answer:
+      'Vanyshr is an AI-powered privacy protection service that finds and removes your personal information from data broker websites. We scan 100+ brokers, identify every record tied to your identity, and automatically submit legally-required removal requests on your behalf. Monthly scans ensure your data stays off the web long-term.',
+  },
+  {
+    question: 'How long does data removal take?',
+    answer:
+      "Most removals complete within 30\u201390 days, depending on the broker. Some respond quickly; others require legal follow-up. We handle all of it and flag any non-compliant brokers so you're always in the loop.",
+  },
+  {
+    question: 'Is my information safe with Vanyshr?',
+    answer:
+      'Absolutely. We use the minimum amount of personal information needed to do the job, store it with bank-level encryption, and never share or sell it. If you close your account, all your data is permanently deleted — no backups, no transfers.',
+  },
+  {
+    question: 'How often do you scan for new data?',
+    answer:
+      'Subscribers receive monthly scans. Data brokers constantly re-acquire and re-list information, so ongoing monitoring is essential. When new records appear, we immediately submit fresh removal requests.',
+  },
+  {
+    question: 'What is a QuickScan?',
+    answer:
+      'A QuickScan is a free, no-account-required scan that shows you exactly what personal data is currently exposed about you across major data broker sites. It takes under 2 minutes and requires only your name and general location to run.',
+  },
+  {
+    question: 'Can I cancel my subscription anytime?',
+    answer:
+      "Yes. Cancel anytime with no penalty. You'll retain access until the end of your billing period, and if you're within your first 30 days, you're eligible for a full refund — no questions asked.",
+  },
+  {
+    question: 'Do you offer a money-back guarantee?',
+    answer:
+      "Yes — 30 days, no questions asked. If you're unsatisfied for any reason within your first month, we'll refund your payment in full.",
+  },
+  {
+    question: 'Will my data come back after removal?',
+    answer:
+      "Without ongoing monitoring — yes, often within months. That's exactly why we offer subscription plans. Our monthly scans catch re-listings immediately and re-submit removals before your data becomes accessible again.",
+  },
+];
 
 export default function FAQSection() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
-  const faqData = [
-    {
-      question: "What is Vanyshr and how does it work?",
-      answer: "Vanyshr is a comprehensive privacy protection service that automatically removes your personal information from data broker websites. We scan hundreds of data broker sites, identify your information, and submit removal requests on your behalf."
-    },
-    {
-      question: "How long does it take to remove my data?",
-      answer: "Data removal typically takes 30-90 days, depending on the data broker. We continuously monitor and follow up on removal requests to ensure your information is properly deleted."
-    },
-    {
-      question: "Is my information safe with Vanyshr?",
-      answer: "Absolutely. We use bank-level encryption and never store your sensitive personal information. Your privacy and security are our top priorities."
-    },
-    {
-      question: "How often do you scan for new data?",
-      answer: "We perform monthly scans to check for new instances of your personal information appearing on data broker sites, ensuring ongoing protection."
-    },
-    {
-      question: "Can I cancel my subscription anytime?",
-      answer: "Yes, you can cancel your subscription at any time. Your data removal requests will continue to be processed, and you'll maintain access until the end of your billing period."
-    },
-    {
-      question: "Do you offer a money-back guarantee?",
-      answer: "Yes, we offer a 30-day money-back guarantee. If you're not satisfied with our service, we'll refund your payment in full."
-    }
-  ];
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section className="section-padding bg-white">
+    <section id="faq" className="section-padding bg-[#0a1d2e]">
       <div className="container-max">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get answers to the most common questions about our privacy protection service
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start">
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqData.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="border border-gray-200 rounded-lg"
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+          {/* Left: Header + CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="lg:sticky lg:top-24"
+          >
+            <p className="text-[#00BFFF] text-xs font-medium tracking-widest uppercase mb-3">
+              FAQ
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight tracking-tight mb-5">
+              Questions we get a lot
+            </h2>
+            <p className="text-[#B8C4CC] text-base leading-relaxed mb-8">
+              Can't find what you're looking for? Email us at{' '}
+              <a
+                href="mailto:hello@vanyshr.com"
+                className="text-[#00BFFF] hover:underline"
               >
-                <span className="font-semibold text-brand-text">
-                  {faq.question}
-                </span>
-                <ChevronDown 
-                  className={`w-5 h-5 text-gray-500 transition-transform ${
-                    openFaq === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {openFaq === index && (
-                <div className="px-6 pb-4">
-                  <p className="text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </motion.div>
-          ))}
+                hello@vanyshr.com
+              </a>
+            </p>
+            <a
+              href="https://vanyshr.vercel.app/quick-scan/"
+              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+            >
+              Run a Free QuickScan
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.div>
+
+          {/* Right: Accordion */}
+          <div className="space-y-2">
+            {faqData.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
+                viewport={{ once: true }}
+                className={`border rounded-xl overflow-hidden transition-colors duration-200 ${
+                  openIndex === index
+                    ? 'border-[#00BFFF]/50 bg-[#00BFFF]/5'
+                    : 'border-[#2A4A68] bg-[#2D3847] hover:border-[#00BFFF]/30'
+                }`}
+              >
+                <button
+                  onClick={() => toggle(index)}
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                >
+                  <span className="text-white font-semibold text-sm leading-snug">
+                    {faq.question}
+                  </span>
+                  <span className="flex-shrink-0 text-[#00BFFF]">
+                    {openIndex === index ? (
+                      <Minus className="w-4 h-4" />
+                    ) : (
+                      <Plus className="w-4 h-4" />
+                    )}
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {openIndex === index && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.28, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-5 pb-5 pt-0">
+                        <p className="text-[#B8C4CC] text-sm leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

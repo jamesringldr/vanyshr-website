@@ -1,34 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Brand */
+  --brand-primary: #00BFFF;
+  --brand-dark: #022136;
+  --accent-hover: #00D4FF;
+  --accent-risk: #FF8A00;
+
+  /* Semantic */
+  --success: #00D4AA;
+  --warning: #FFB81C;
+  --error: #FF5757;
+  --info: #00BFFF;
+  --disabled: #4A5568;
+
+  /* Backgrounds */
+  --bg-page: #022136;
+  --bg-surface: #2D3847;
+  --bg-surface-secondary: #1A2E42;
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #B8C4CC;
+  --text-tertiary: #7A92A8;
+
+  /* Borders */
+  --border-subtle: #2A4A68;
+  --border-brand: #00BFFF;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: #F8FBFD;
-    color: #022136;
+    font-family: 'Ubuntu', system-ui, sans-serif;
+    background-color: #022136;
+    color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-accent hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105;
+    @apply bg-brand-primary hover:bg-brand-hover text-brand-bg font-bold py-3 px-6 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
   }
-  
+
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-brand-text border-2 border-brand-accent font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+    @apply bg-transparent hover:bg-brand-primary/10 text-brand-primary border-2 border-brand-primary font-bold py-3 px-6 rounded-xl transition-all duration-200;
   }
-  
+
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply py-20 px-6 sm:px-8 lg:px-12;
   }
-  
+
   .container-max {
     @apply max-w-7xl mx-auto;
   }
+
+  .card-surface {
+    @apply bg-brand-surface border border-border-subtle rounded-2xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-primary to-brand-hover bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .section-divider {
+    border-top: 1px solid #2A4A68;
+  }
+
+  .glow-azure {
+    box-shadow: 0 0 30px rgba(0, 191, 255, 0.25);
+  }
+
+  .glow-azure-strong {
+    box-shadow: 0 0 60px rgba(0, 191, 255, 0.35);
+  }
+}
+
+/* Animation classes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 191, 255, 0.3); }
+  50% { box-shadow: 0 0 50px rgba(0, 191, 255, 0.6); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease-out both;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #022136;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A4A68;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00BFFF;
 }

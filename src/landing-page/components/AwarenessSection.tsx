@@ -1,68 +1,90 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, Shield, Search } from 'lucide-react';
+import { Mail, Phone, CreditCard, Eye } from 'lucide-react';
+
+const cards = [
+  {
+    icon: Mail,
+    title: 'Reduce Phishing & Hacking Risk',
+    description:
+      'Hackers find your email and phone through data brokers to send convincing fake alerts — tricking you into handing over banking credentials or social media access.',
+    stat: '91%',
+    statLabel: 'of cyberattacks start with exposed personal data',
+  },
+  {
+    icon: Phone,
+    title: 'Stop Spam Calls & Texts',
+    description:
+      'Predatory lead-gen companies harvest and sell your phone number, age, and address to hundreds of businesses that bombard you with unwanted calls and texts.',
+    stat: '50B+',
+    statLabel: 'robocalls placed in the US each year',
+  },
+  {
+    icon: CreditCard,
+    title: 'Prevent Identity Theft',
+    description:
+      'Thieves combine your publicly available address, birthdate, and court records to open credit cards and take out loans in your name — often going undetected for months.',
+    stat: '$10K',
+    statLabel: 'average identity theft victim loss',
+  },
+  {
+    icon: Eye,
+    title: 'Shrink Your Digital Footprint',
+    description:
+      'Limiting publicly available personal data makes it exponentially harder for stalkers, harassers, and malicious actors to locate, track, or target you online.',
+    stat: '4,000+',
+    statLabel: 'data brokers currently operating in the US',
+  },
+];
 
 export default function AwarenessSection() {
-  const awarenessCards = [
-    {
-      icon: Mail,
-      title: "Reduce Hacking and Phishing Risk",
-      description: "Hackers easily find info like your phone number or email to send fake failed login notifications to trick you into entering your real credentials that they use to take over your banking or social media accounts."
-    },
-    {
-      icon: Phone,
-      title: "Decrease Spam Calls and Texts",
-      description: "Predatory lead generation companies harvest and sell data like your phone number, age and address to hundreds of companies that use it to relentlessly try and sell you unwanted products."
-    },
-    {
-      icon: Shield,
-      title: "Prevent Identity Theft Attempts",
-      description: "Identity theives can use your public information like your address, date of birth and court records to open new credit cards in your name."
-    },
-    {
-      icon: Search,
-      title: "Minimize Your Digital Footprint",
-      description: "Limiting the amount of personal information thats easily availabe makes it harder for malicious actors to find and exploit your data. Preventing unwanted prowlers from being able to track you."
-    }
-  ];
-
   return (
-    <section className="section-padding bg-brand-bg">
+    <section className="section-padding bg-[#022136]">
       <div className="container-max">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center md:text-left mb-16"
+          className="max-w-2xl mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-brand-text mb-4">
-            Why{' '}
-            <span className="text-brand-accent">removing my data</span>{' '}
-            matters?
+          <p className="text-[#00BFFF] text-xs font-medium tracking-widest uppercase mb-3">
+            Why It Matters
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight tracking-tight">
+            Your exposed data is a weapon.{' '}
+            <span className="text-[#B8C4CC] font-normal">
+              Anyone can buy it for pennies.
+            </span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {awarenessCards.map((card, index) => (
+        {/* Cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {cards.map((card, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white rounded-lg shadow-sm p-6 relative"
+              className="bg-[#2D3847] border border-[#2A4A68] rounded-2xl p-6 flex flex-col gap-4 hover:border-[#00BFFF]/40 transition-colors duration-200 group"
             >
-              <div className="absolute top-4 right-4">
-                <card.icon className="w-8 h-8 text-brand-accent" />
+              <div className="w-10 h-10 rounded-xl bg-[#00BFFF]/10 flex items-center justify-center group-hover:bg-[#00BFFF]/20 transition-colors duration-200">
+                <card.icon className="w-5 h-5 text-[#00BFFF]" />
               </div>
-              <h3 className="text-lg font-bold text-brand-text pr-12">
+              <h3 className="text-white font-bold text-base leading-snug">
                 {card.title}
               </h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-[#B8C4CC] text-sm leading-relaxed flex-1">
                 {card.description}
               </p>
+              <div className="pt-3 border-t border-[#2A4A68]">
+                <div className="text-[#FF8A00] font-bold text-xl">{card.stat}</div>
+                <div className="text-[#7A92A8] text-xs mt-0.5">{card.statLabel}</div>
+              </div>
             </motion.div>
           ))}
         </div>
