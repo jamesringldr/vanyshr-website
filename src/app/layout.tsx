@@ -26,8 +26,8 @@ export const metadata: Metadata = {
       "Vanyshr uses AI to find and remove your personal data from 100+ data brokers. Start free.",
   },
   icons: {
-    icon: "/assets/LogoFiles/PrimaryIcon-outline.svg",
-    shortcut: "/assets/LogoFiles/PrimaryIcon-outline.svg",
+    icon: "/assets/LogoFiles/PrimaryIcon-outline.png",
+    shortcut: "/assets/LogoFiles/PrimaryIcon-outline.png",
   },
 };
 
@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/LogoFiles/PrimaryIcon-outline.svg" type="image/svg+xml" />
+        <link rel="icon" href="/assets/LogoFiles/PrimaryIcon-outline.png" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
