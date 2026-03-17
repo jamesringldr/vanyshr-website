@@ -1,9 +1,9 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { Plus, Minus, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useBetaModal } from '../../context/BetaModalContext';
 
 const faqData = [
   {
@@ -49,6 +49,7 @@ const faqData = [
 ];
 
 export default function FAQSection() {
+  const { openBetaModal } = useBetaModal();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
@@ -81,13 +82,13 @@ export default function FAQSection() {
                 hello@vanyshr.com
               </a>
             </p>
-            <a
-              href="https://vanyshr.vercel.app/quick-scan/"
-              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
+            <button
+              onClick={openBetaModal}
+              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02] cursor-pointer"
             >
               Run a Free QuickScan
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </motion.div>
 
           {/* Right: Accordion */}

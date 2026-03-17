@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ScanSearch, Trash2, ShieldCheck, ArrowRight } from 'lucide-react';
+import { useBetaModal } from '../../context/BetaModalContext';
 
 const steps = [
   {
@@ -31,6 +32,7 @@ const steps = [
 ];
 
 export default function HowItWorksSection() {
+  const { openBetaModal } = useBetaModal();
   return (
     <section id="how-it-works" className="section-padding bg-[#0a1d2e]">
       <div className="container-max">
@@ -111,13 +113,13 @@ export default function HowItWorksSection() {
             <span className="text-white font-semibold">Start with a free scan.</span>{' '}
             Create an account, give us the basics, and we'll show you exactly what's exposed — right now.
           </p>
-          <a
-            href="https://vanyshr.vercel.app/quick-scan/"
-            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_30px_rgba(0,191,255,0.25)]"
+          <button
+            onClick={openBetaModal}
+            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_30px_rgba(0,191,255,0.25)] cursor-pointer"
           >
             Run My Free QuickScan
             <ArrowRight className="w-5 h-5" />
-          </a>
+          </button>
           <p className="text-[#7A92A8] text-sm mt-3">No credit card required</p>
         </motion.div>
       </div>

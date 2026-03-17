@@ -1,9 +1,9 @@
 'use client';
 
 import { Mail, Twitter, Linkedin } from 'lucide-react';
+import { useBetaModal } from '../../context/BetaModalContext';
 
 const productLinks = [
-  { label: 'QuickScan', href: 'https://vanyshr.vercel.app/quick-scan/' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Features', href: '#features' },
   { label: 'Pricing', href: '#pricing' },
@@ -25,6 +25,7 @@ const legalLinks = [
 ];
 
 export default function Footer() {
+  const { openBetaModal } = useBetaModal();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -43,9 +44,9 @@ export default function Footer() {
           <p className="text-[#B8C4CC] text-lg mb-8 max-w-lg mx-auto">
             Run a free QuickScan and see exactly what personal data is exposed about you right now.
           </p>
-          <a
-            href="https://vanyshr.vercel.app/quick-scan/"
-            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-10 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_40px_rgba(0,191,255,0.3)]"
+          <button
+            onClick={openBetaModal}
+            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-10 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_40px_rgba(0,191,255,0.3)] cursor-pointer"
           >
             Run My Free QuickScan
             <svg
@@ -56,7 +57,7 @@ export default function Footer() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </button>
           <p className="text-[#7A92A8] text-sm mt-4">
             No credit card required &nbsp;·&nbsp; No sign-up to scan &nbsp;·&nbsp; Your first removal is free
           </p>
@@ -108,6 +109,14 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold text-sm mb-5">Product</h4>
             <ul className="space-y-3">
+              <li>
+                <button
+                  onClick={openBetaModal}
+                  className="text-[#7A92A8] hover:text-white text-sm transition-colors duration-150 cursor-pointer"
+                >
+                  QuickScan
+                </button>
+              </li>
               {productLinks.map((link) => (
                 <li key={link.label}>
                   <a
