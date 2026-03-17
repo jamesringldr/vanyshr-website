@@ -14,12 +14,6 @@ const dataPoints = [
   'Financial Records',
 ];
 
-const STAT_ITEMS = [
-  { value: '100+', label: 'Data Brokers Targeted' },
-  { value: '30–90', label: 'Days Avg. Removal' },
-  { value: '100%', label: 'Data Deleted on Request' },
-  { value: '0', label: 'Data Sold. Ever.' },
-];
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -79,7 +73,7 @@ export default function HeroSection() {
             {/* Row 1: left-justified so "Your" stays anchored as carousel changes width */}
             <span className="flex items-baseline gap-3 flex-wrap">
               <span>Your</span>
-              <span className="relative overflow-hidden">
+              <span className="relative overflow-hidden pr-2">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={currentIndex}
@@ -149,25 +143,6 @@ export default function HeroSection() {
           </motion.p>
         </div>
 
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.85 }}
-          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#2A4A68] rounded-2xl overflow-hidden border border-[#2A4A68]"
-        >
-          {STAT_ITEMS.map((stat, i) => (
-            <div
-              key={i}
-              className="bg-[#022136] px-6 py-6 text-center hover:bg-[#0d2a3d] transition-colors duration-200"
-            >
-              <div className="text-3xl font-bold text-[#00BFFF] tracking-tight">
-                {stat.value}
-              </div>
-              <div className="text-[#7A92A8] text-sm mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

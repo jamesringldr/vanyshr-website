@@ -62,10 +62,10 @@ export default function Navigation() {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center">
               <a
-                href="https://vanyshr.vercel.app/sign-in/"
+                href="https://app.vanyshr.com/login"
                 className="bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-150 hover:scale-[1.02] active:scale-[0.98]"
               >
-                Login
+                Dashboard
               </a>
             </div>
 
@@ -97,11 +97,11 @@ export default function Navigation() {
           </div>
           <div className="mt-8">
             <a
-              href="https://vanyshr.vercel.app/sign-in/"
+              href="https://app.vanyshr.com/login"
               className="block text-center bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold py-3.5 rounded-xl transition-colors duration-150"
               onClick={() => setMobileOpen(false)}
             >
-              Login
+              Dashboard
             </a>
           </div>
         </div>
