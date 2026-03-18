@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { useBetaModal } from '../../context/BetaModalContext';
 
 const plans = [
   {
@@ -63,7 +62,6 @@ const plans = [
 ];
 
 export default function PricingSection() {
-  const { openBetaModal } = useBetaModal();
   const [isYearly, setIsYearly] = useState(true);
 
   return (
@@ -181,9 +179,9 @@ export default function PricingSection() {
               </ul>
 
               {/* CTA */}
-              <button
-                onClick={openBetaModal}
-                className={`flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 cursor-pointer ${
+              <a
+                href="https://app.vanyshr.com/quick-scan"
+                className={`flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 ${
                   plan.popular
                     ? 'bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] shadow-[0_0_20px_rgba(0,191,255,0.3)] hover:scale-[1.02]'
                     : 'bg-[#2A4A68] hover:bg-[#344f6b] text-white'
@@ -191,7 +189,7 @@ export default function PricingSection() {
               >
                 {plan.cta}
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
 
               {plan.note && (
                 <p className="text-[#7A92A8] text-xs text-center mt-3">{plan.note}</p>

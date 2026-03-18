@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
-import { useBetaModal } from '../../context/BetaModalContext';
+import { useMobileHandoff } from '../../context/MobileHandoffContext';
 
 const dataPoints = [
   'Phone Numbers',
@@ -17,7 +17,7 @@ const dataPoints = [
 
 
 export default function HeroSection() {
-  const { openBetaModal } = useBetaModal();
+  const { handleQuickScanCTA } = useMobileHandoff();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -116,13 +116,14 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="flex flex-col sm:flex-row items-start justify-start gap-4 mb-5"
           >
-            <button
-              onClick={openBetaModal}
-              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_30px_rgba(0,191,255,0.35)] cursor-pointer"
+            <a
+              href="https://app.vanyshr.com/quick-scan"
+              onClick={handleQuickScanCTA}
+              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_30px_rgba(0,191,255,0.35)]"
             >
               Run a Free QuickScan
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
             <button
               onClick={() => {
                 const el = document.getElementById('how-it-works');

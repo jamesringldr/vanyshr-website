@@ -1,7 +1,7 @@
 'use client';
 
 import { Mail, Twitter, Linkedin } from 'lucide-react';
-import { useBetaModal } from '../../context/BetaModalContext';
+import { useMobileHandoff } from '../../context/MobileHandoffContext';
 
 const productLinks = [
   { label: 'How It Works', href: '#how-it-works' },
@@ -25,7 +25,7 @@ const legalLinks = [
 ];
 
 export default function Footer() {
-  const { openBetaModal } = useBetaModal();
+  const { handleQuickScanCTA } = useMobileHandoff();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -44,9 +44,10 @@ export default function Footer() {
           <p className="text-[#B8C4CC] text-lg mb-8 max-w-lg mx-auto">
             Run a free QuickScan and see exactly what personal data is exposed about you right now.
           </p>
-          <button
-            onClick={openBetaModal}
-            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-10 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_40px_rgba(0,191,255,0.3)] cursor-pointer"
+          <a
+            href="https://app.vanyshr.com/quick-scan"
+            onClick={handleQuickScanCTA}
+            className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-base px-10 py-4 rounded-xl transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] shadow-[0_0_40px_rgba(0,191,255,0.3)]"
           >
             Run My Free QuickScan
             <svg
@@ -57,7 +58,7 @@ export default function Footer() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </a>
           <p className="text-[#7A92A8] text-sm mt-4">
             No credit card required &nbsp;·&nbsp; No sign-up to scan &nbsp;·&nbsp; Your first removal is free
           </p>
@@ -110,12 +111,13 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-5">Product</h4>
             <ul className="space-y-3">
               <li>
-                <button
-                  onClick={openBetaModal}
-                  className="text-[#7A92A8] hover:text-white text-sm transition-colors duration-150 cursor-pointer"
+                <a
+                  href="https://app.vanyshr.com/quick-scan"
+                  onClick={handleQuickScanCTA}
+                  className="text-[#7A92A8] hover:text-white text-sm transition-colors duration-150"
                 >
                   QuickScan
-                </button>
+                </a>
               </li>
               {productLinks.map((link) => (
                 <li key={link.label}>

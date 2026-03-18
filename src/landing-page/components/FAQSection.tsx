@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
-import { useBetaModal } from '../../context/BetaModalContext';
+import { useMobileHandoff } from '../../context/MobileHandoffContext';
 
 const faqData = [
   {
@@ -49,7 +49,7 @@ const faqData = [
 ];
 
 export default function FAQSection() {
-  const { openBetaModal } = useBetaModal();
+  const { handleQuickScanCTA } = useMobileHandoff();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
@@ -82,13 +82,14 @@ export default function FAQSection() {
                 hello@vanyshr.com
               </a>
             </p>
-            <button
-              onClick={openBetaModal}
-              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02] cursor-pointer"
+            <a
+              href="https://app.vanyshr.com/quick-scan"
+              onClick={handleQuickScanCTA}
+              className="inline-flex items-center gap-2 bg-[#00BFFF] hover:bg-[#00D4FF] text-[#022136] font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-200 hover:scale-[1.02]"
             >
               Run a Free QuickScan
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </a>
           </motion.div>
 
           {/* Right: Accordion */}

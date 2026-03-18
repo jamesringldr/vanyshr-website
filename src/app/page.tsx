@@ -8,11 +8,11 @@ import FeaturesSection from '../landing-page/components/FeaturesSection';
 import PricingSection from '../landing-page/components/PricingSection';
 import FAQSection from '../landing-page/components/FAQSection';
 import Footer from '../landing-page/components/Footer';
-import { BetaModalProvider } from '../context/BetaModalContext';
+import { MobileHandoffProvider } from '../context/MobileHandoffContext';
 
 export default function Home() {
   return (
-    <BetaModalProvider>
+    <MobileHandoffProvider>
       <div className="min-h-screen bg-brand-bg">
         <Navigation />
         <main>
@@ -25,6 +25,6 @@ export default function Home() {
         </main>
         <Footer />
       </div>
-    </BetaModalProvider>
+    </MobileHandoffProvider>
   );
 }
